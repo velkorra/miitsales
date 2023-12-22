@@ -12,6 +12,27 @@ body{
     margin: 0 auto;
     width: 60%;
     height: 100%;
+    position: relative;
+}
+.header-content .login{
+    position: absolute;
+    right: 20%;
+    top: 5%;
+    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.7);
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: rgba(0, 0, 0, 0.15);
+}
+.header-content .reg{
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.7);
+
 }
 .main{
     min-height: 80vh;
@@ -146,10 +167,8 @@ body{
     top: 30%;
     left: 10%;
 }
-.ticket .line {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    border: 1px dotted #000; /* Задаем стиль линии и цвет */
-    padding: 10px; /* Добавляем отступ вокруг линии */
-  }
+.ticket-info hr{
+    
+    top: 50%;
+    width: 50%;
+}

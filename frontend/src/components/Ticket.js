@@ -8,7 +8,6 @@ function Ticket(props) {
     console.log(ticket)
     return (
         <div className='ticket'>
-        
             <div className='ticket-info'>
                 <div className='city-from'>{ticket.departure_city}</div>
                 <div className='city-to'>{ticket.arrival_city}</div>

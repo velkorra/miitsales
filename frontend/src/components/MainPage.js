@@ -1,0 +1,33 @@
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import axios from "axios";
+import '../styles/main.css'
+import Ticket from "./Ticket";
+
+function MainPage() {
+    const [tickets, setTickets] = useState([])
+    const [isReady, setIsReady] = useState(false)
+    const filter = (ticket=>ticket.departure_city==='Москва')
+    useEffect(fetchTickets, [])
+    function fetchTickets() {
+        axios
+            .get('http://127.0.0.1:8000/1')
+            .then(data => {
+                setTickets(data.data)
+        
+                setIsReady(true)
+            })
+    }
+    return(
+
+        <div className="main">
+            <div className="main-content">
+                {isReady? tickets.map((ticket, id)=>{
+                    return <Ticket key={id} ticket={ticket}></Ticket>    
+                }):''}
+
+            </div>
+        </div>
+    )
+}
+
+export default MainPage

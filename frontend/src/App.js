@@ -2,35 +2,28 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 import './styles/main.css'
 import Ticket from "./components/Ticket";
+import MainPage from "./components/MainPage";
+import Header from "./components/Header";
+import LoginPage from "./components/LoginPage";
 
 const App = () => {
-    const [tickets, setTickets] = useState([])
-    const [isReady, setIsReady] = useState(false)
-    const filter = (ticket=>ticket.departure_city==='Москва')
-    useEffect(fetchTickets, [])
-    function fetchTickets() {
-        axios
-            .get('http://127.0.0.1:8000/1')
-            .then(data => {
-                setTickets(data.data)
-        
-                setIsReady(true)
-            })
+    const [pageState, setPageState] = useState('main')
+    const toLoginPage = () => setPageState('login')
+    const toMainPage = () => setPageState('main')
+    if (pageState === 'login') {
+        return (
+            <LoginPage toMain={toMainPage}></LoginPage>
+        )
     }
-    return(
-        <div>
-        <div className="header">
-            <div className="header-content"></div>
-        </div>
-        <div className="main">
-            <div className="main-content">
-                {isReady? tickets.map((ticket, id)=>{
-                    return <Ticket key={id} ticket={ticket}></Ticket>    
-                }):''}
 
+    else if (pageState === 'main') {
+        return (
+            <div>
+                <Header toLogin={toLoginPage}></Header>
+                <MainPage></MainPage>
             </div>
-        </div>
-        </div>
-    )
+        )
+    }
+    else return (<div>pageError</div>)
 }
 export default App
