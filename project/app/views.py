@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 class FlightView(APIView):
     def get(self, request):
         output = [{
+            'id':output.id,
             'departure_city': output.departure_city,
             'departure_airport': output.departure_airport,
             'arrival_city': output.arrival_city,

@@ -13,7 +13,6 @@ function MainPage() {
             .get('http://127.0.0.1:8000/1')
             .then(data => {
                 setTickets(data.data)
-        
                 setIsReady(true)
             })
     }

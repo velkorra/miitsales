@@ -16,7 +16,8 @@ class Flight(models.Model):
     price_economy = models.IntegerField()
     price_business = models.IntegerField()
     plane = models.CharField(max_length=50)
-    
+    def __str__(self) -> str:
+        return f'Полет {self.departure_airport} - {self.arrival_airport} {self.departure_day}'    
 
     
 class Ticket(models.Model):

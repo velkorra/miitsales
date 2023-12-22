@@ -33,20 +33,27 @@ body {
     position: absolute;
     display: flex;
     right: 5%;
-    top: 5%;
+    top: 10%;
     width: fit-content;
     font-family: 'Exo 2', Helvetica, Arial, sans-serif;
     font-size: 2rem;
     color: rgba(0, 0, 0, 0.7);
     gap: 1%;
+    
 }
 
 .header-content .logreg div {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: rgba(0, 0, 0, 0.15);
+    width: fit-content;
+    text-wrap: nowrap;
+    cursor: pointer;
 }
-
+.header-content .logreg a{
+    color: inherit;
+    text-decoration: inherit;
+}
 .header-content .border {
     border-right-style: solid;
     border-right-width: 2px;
@@ -96,7 +103,10 @@ body {
     flex: 1;
     position: relative;
 }
-
+.ticket .ticket-buy a{
+    color: inherit;
+    text-decoration: inherit;
+}
 .ticket .company {
     font-family: 'Lobster', Helvetica, Arial, sans-serif;
     font-size: 1.4rem;

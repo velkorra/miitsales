@@ -18,7 +18,7 @@ function Ticket(props) {
                 <div className='airport-to'>{ticket.arrival_airport}</div>
             </div>
             <div className='ticket-buy'>
-                <button>Купить</button>
+                {localStorage.getItem('status')==='admin'?<button><a href={`http://127.0.0.1:8000/admin/app/flight/${ticket.id}/change/`}>Изменить</a></button>:<button>{localStorage.getItem('status')==='client'?'Купить':'Необходим вход'}</button>}
                 <div className='left'>Осталось {ticket.spare_economy+ticket.spare_business} мест</div>
                 <div className='price'>от {ticket.price_economy} ₽</div>
             </div>
