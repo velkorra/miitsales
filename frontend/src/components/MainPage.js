@@ -3,7 +3,7 @@ import axios from "axios";
 import '../styles/main.css'
 import Ticket from "./Ticket";
 
-function MainPage() {
+function MainPage(props) {
     const [tickets, setTickets] = useState([])
     const [isReady, setIsReady] = useState(false)
     const filter = (ticket=>ticket.departure_city==='Москва')
@@ -21,7 +21,7 @@ function MainPage() {
         <div className="main">
             <div className="main-content">
                 {isReady? tickets.map((ticket, id)=>{
-                    return <Ticket key={id} ticket={ticket}></Ticket>    
+                    return <Ticket toPayment={props.toPayment} key={id} ticket={ticket}></Ticket>    
                 }):''}
 
             </div>

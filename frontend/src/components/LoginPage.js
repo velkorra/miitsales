@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/login.css'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
+import Payment from './Payment'
 
 function LoginPage(props) {
 

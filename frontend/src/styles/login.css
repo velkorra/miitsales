@@ -63,7 +63,18 @@ body{
     font-size: 1rem;
 }
 .input-container button{
+    position: relative;
     margin-top: 10%;
+    width: fit-content;
+    min-width: 30%;
+    background-color: grey;
+    border-radius: 5px;
+}
+.bbutton{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
     width: fit-content;
     min-width: 30%;
     background-color: grey;

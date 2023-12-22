@@ -52,6 +52,13 @@ class SessionView(APIView):
     def get(self, request):
         from random import randint
         request_type = request.GET.get('request_type')
+        if request_type=='payment':
+            login = (request.GET.get('login'))
+            password = (request.GET.get('password'))
+            if login=='456987123' and password=='key118':
+                return Response({'success': True})
+            else:
+                return Response({'success': False})
         if request_type=='create_user':
             login = (request.GET.get('login'))
             password = (request.GET.get('password'))
