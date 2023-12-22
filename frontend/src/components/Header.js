@@ -7,8 +7,11 @@ function Header(props) {
   return (
     <div className="header">
             <div className="header-content">
+                <div className="logreg">
                 <div className="login" onClick={props.toLogin}>Вход</div>
-                <div className="reg">регистрация</div>
+                <div className="border"></div>
+                <div>регистрация</div>
+                </div>
             </div>
         </div>
   )

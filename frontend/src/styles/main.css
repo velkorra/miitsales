@@ -14,26 +14,26 @@ body{
     height: 100%;
     position: relative;
 }
-.header-content .login{
+.header-content .logreg{
     position: absolute;
-    right: 13vw;
+    display: flex;
+    right: 5%;
     top: 5%;
+    width: fit-content;
     font-family: 'Exo 2', Helvetica, Arial, sans-serif;
     font-size: 2rem;
     color: rgba(0, 0, 0, 0.7);
+    gap: 1%;
+}
+.header-content .logreg div{
+    width: fit-content;
+}
+.header-content .border{
     border-right-style: solid;
     border-right-width: 2px;
     border-right-color: rgba(0, 0, 0, 0.15);
 }
-.header-content .reg{
-    position: absolute;
-    right: 3vw;
-    top: 5%;
-    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
-    font-size: 2rem;
-    color: rgba(0, 0, 0, 0.7);
 
-}
 .main{
     min-height: 80vh;
     max-height: fit-content;
