@@ -5,13 +5,66 @@ body{
     margin: 0;
     position: relative;
 }
-.user-form{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
+.logo {
+    position: fixed;
+    top: 20vh;
     left: 50%;
-    width: 100px;
-    height: 100px;
-    background-color: bisque;
+    transform: translateX(-50%);
+    font-family: 'Lobster', sans-serif;
+    background: -webkit-linear-gradient(45deg, #09009f, #ff00aa 80%);
+    -webkit-background-clip: text;
+    
+    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+
+}
+.user-form{
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 50vh;
+    left: 50%;
+    width: 22vw;
+    height: 34vh;
+    background-color: lightblue;
+    border-radius: 5px;
+}
+.user-form .title{
+    position: relative;
+    top: 5%;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+    width: 100%;
+
+}
+.input-container{
+    position: relative;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+.input-container h1{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+    margin-bottom: 2%;
+}
+.input-container input{
+    width: 70%;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+.input-container button{
+    margin-top: 10%;
+    width: 30%;
+    background-color: grey;
     border-radius: 5px;
 }
