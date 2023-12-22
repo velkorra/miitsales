@@ -23,3 +23,9 @@ class Ticket(models.Model):
     flightID = models.IntegerField()
     price = models.IntegerField()
     ticket_class = models.CharField(max_length=50)
+    
+class Session(models.Model):
+    token = models.CharField(max_length=60)
+    status = models.CharField(max_length=10)
+    userID = models.CharField(max_length=60)
+    time = models.DateTimeField(auto_now=False, auto_now_add=True)

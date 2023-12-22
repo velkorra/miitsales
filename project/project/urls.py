@@ -24,7 +24,7 @@ from app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('1', FlightView.as_view(), name="article-view"),
-    path('2', TicketView.as_view(), name='ss')
+    path('2', SessionView.as_view(), name='ss')
 ]
 
 

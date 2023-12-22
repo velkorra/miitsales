@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from . models import *
 from . serializer import *
+from django.contrib.auth.models import User
 
 
 class FlightView(APIView):
@@ -23,6 +24,7 @@ class FlightView(APIView):
             'price_business': output.price_business,
             'plane': output.plane
             } for output in Flight.objects.all()]
+        
         return Response(output)
     def post(self, request):
         serializer = FlightSerializer(data=request.data)
@@ -44,3 +46,28 @@ class TicketView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+        
+class SessionView(APIView):
+    def get(self, request):
+        from random import randint
+        request_type = request.GET.get('request_type')
+        if request_type=='create_user':
+            login = (request.GET.get('login'))
+            password = (request.GET.get('password'))
+            user = User.objects.create_user(username=login, email=login, password=password)
+            session = Session(userID=user.get_username(), status='client', token=str(randint(10**20, 10**50)))
+            session.save()
+            print(session)
+        output = [{
+            'userID': output.userID,
+            'status': output.status,
+            'token': output.token
+            } for output in Session.objects.all()]
+        return Response(output)
+    
+    def post(self, request):
+        serializer = TicketSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        

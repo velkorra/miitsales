@@ -11,7 +11,7 @@ function Header(props) {
                 <div className="logreg">
                 <div className="login" onClick={props.toLogin}>Вход</div>
                 <div className="border"></div>
-                <div>регистрация</div>
+                <div onClick={props.toReg}>регистрация</div>
                 </div>
             </div>
         </div>

@@ -10,16 +10,17 @@ const App = () => {
     const [pageState, setPageState] = useState('main')
     const toLoginPage = () => setPageState('login')
     const toMainPage = () => setPageState('main')
-    if (pageState === 'login') {
+    const toRegistrationPage = () => setPageState('registration')
+    if (pageState === 'login' || pageState==='registration') {
         return (
-            <LoginPage toMain={toMainPage}></LoginPage>
+            <LoginPage toMain={toMainPage} pageState={pageState}></LoginPage>
         )
     }
 
     else if (pageState === 'main') {
         return (
             <div>
-                <Header toLogin={toLoginPage}></Header>
+                <Header toLogin={toLoginPage} toReg={toRegistrationPage}></Header>
                 <MainPage></MainPage>
             </div>
         )

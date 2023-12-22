@@ -64,7 +64,8 @@ body{
 }
 .input-container button{
     margin-top: 10%;
-    width: 30%;
+    width: fit-content;
+    min-width: 30%;
     background-color: grey;
     border-radius: 5px;
 }
