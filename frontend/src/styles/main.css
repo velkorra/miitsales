@@ -16,7 +16,7 @@ body{
 }
 .header-content .login{
     position: absolute;
-    right: 20%;
+    right: 13vw;
     top: 5%;
     font-family: 'Exo 2', Helvetica, Arial, sans-serif;
     font-size: 2rem;
@@ -27,7 +27,7 @@ body{
 }
 .header-content .reg{
     position: absolute;
-    right: 3%;
+    right: 3vw;
     top: 5%;
     font-family: 'Exo 2', Helvetica, Arial, sans-serif;
     font-size: 2rem;
