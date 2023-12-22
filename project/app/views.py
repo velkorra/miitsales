@@ -58,6 +58,25 @@ class SessionView(APIView):
             session = Session(userID=user.get_username(), status='client', token=str(randint(10**20, 10**50)))
             session.save()
             print(session)
+            return Response({'babba': 'bobba'})
+        if request_type=='login':
+            login = (request.GET.get('login'))
+            password = (request.GET.get('password'))
+            try:
+                user = User.objects.get(username=login)
+                session = Session.objects.get(userID=login)
+                if user.check_password(password):
+                    output = {
+                    'success': True,
+                    'status': session.status,
+                    'token': session.token
+                    }
+                    return Response(output)
+                else:
+                    return Response({'success': False})
+            except Exception as e:
+                print(e)
+
         output = [{
             'userID': output.userID,
             'status': output.status,
