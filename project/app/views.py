@@ -70,7 +70,8 @@ class SessionView(APIView):
                     output = {
                     'success': True,
                     'status': session.status,
-                    'token': session.token
+                    'token': session.token,
+                    'username':login
                     }
                     return Response(output)
                 else:

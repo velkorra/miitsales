@@ -13,6 +13,7 @@ function LoginForm(props) {
                 props.controllers.setToken(data.data.token)
                 props.controllers.setStatus(data.data.status)
                 props.controllers.toMain()
+                props.controllers.setUser(data.data.username)
             }
         else{
             alert('Неверный логин или пароль')
