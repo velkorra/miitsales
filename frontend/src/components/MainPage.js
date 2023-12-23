@@ -21,7 +21,7 @@ function MainPage(props) {
         <div className="main">
             <div className="main-content">
                 {isReady? tickets.map((ticket, id)=>{
-                    return <Ticket toPayment={props.toPayment} key={id} ticket={ticket}></Ticket>    
+                    return <Ticket toPayment={props.toPayment} key={id} ticket={ticket} toLogin={props.toLogin}></Ticket>    
                 }):''}
 
             </div>

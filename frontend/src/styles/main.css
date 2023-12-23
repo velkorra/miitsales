@@ -2,12 +2,17 @@
 
 body {
     margin: 0;
+    text-wrap: nowrap;
 }
-
+*{
+    font-size: 1em;
+}
 .header {
     height: 20vh;
     width: 100vw;
     background-color: white;
+    overflow: hidden;
+    min-height: 31px;
 }
 
 .header-content {
@@ -15,6 +20,22 @@ body {
     width: 60%;
     height: 100%;
     position: relative;
+    @media (max-width:1700px){
+        width: 65%;
+    }
+    @media (max-width:1500px){
+        width: 70%;
+    }
+    @media (max-width:1300px){
+        width: 75%;
+    }
+    @media (max-width:1200px){
+        width: 80%;
+    }
+    @media (max-width:600px){
+        width: 99%;
+    }
+    
 }
 
 .header-content .logo {
@@ -82,6 +103,23 @@ body {
     display: flex;
     flex-direction: column;
     gap: 3vh;
+
+    @media (max-width:1700px){
+        width: 65%;
+    }
+    @media (max-width:1500px){
+        width: 70%;
+    }
+    @media (max-width:1300px){
+        width: 75%;
+    }
+    @media (max-width:1200px){
+        width: 80%;
+    }
+    @media (max-width:600px){
+        width: 99%;
+    }
+    
 }
 
 .ticket {
@@ -185,7 +223,6 @@ body {
     color: white;
     background-image: linear-gradient(to bottom right, #00ffff 0%, #0073ff 60%, #aa5aff 80%, #ff416e 900%);
     background-size: 125% 125%;
-    transition: 1s all ease-in-out;
     cursor: pointer;
     background-position-x: 5%;
     border-radius: 5px;
@@ -193,7 +230,6 @@ body {
 
 .ticket .ticket-buy button:hover {
     background-image: linear-gradient(to bottom right, #00ffff 10%, #0073ff 50%, #aa5aff 90%, #ff416e 110%);
-    transition: all 1s ease-in-out;
 
 }
 
@@ -219,4 +255,9 @@ body {
 
     top: 50%;
     width: 50%;
+}
+@media (max-width:1100px) {
+    *{
+        font-size: 0.7em;
+    }    
 }

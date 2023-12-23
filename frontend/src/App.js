@@ -30,7 +30,7 @@ const App = () => {
         return (
             <div>
                 <Header toLogin={toLoginPage} toReg={toRegistrationPage} logged={logged} setToken={setToken} setLogged={(value)=>setLogged(value)} setStatus={setStatus} setUser={setUser}></Header>
-                <MainPage toPayment={toPaymentPage}></MainPage>
+                <MainPage toPayment={toPaymentPage} toLogin={toLoginPage}></MainPage>
             </div>
         )
     }
