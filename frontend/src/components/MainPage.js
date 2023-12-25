@@ -9,12 +9,20 @@ function MainPage(props) {
     const filter = (ticket=>ticket.departure_city==='Москва')
     useEffect(fetchTickets, [])
     function fetchTickets() {
+        props.pageState==='userpage'?
+        axios
+        .get('http://127.0.0.1:8000/2', {params: {login:props.login, request_type:"userflights"}})
+        .then(data => { 
+            console.log(2344);
+
+        }):
         axios
             .get('http://127.0.0.1:8000/1')
             .then(data => {
                 setTickets(data.data)
                 setIsReady(true)
             })
+            
     }
     return(
 

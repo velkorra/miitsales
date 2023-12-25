@@ -22,8 +22,7 @@ class Flight(models.Model):
     
 class Ticket(models.Model):
     flightID = models.IntegerField()
-    price = models.IntegerField()
-    ticket_class = models.CharField(max_length=50)
+    username=models.CharField(max_length=50)
     
 class Session(models.Model):
     token = models.CharField(max_length=60)

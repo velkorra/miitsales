@@ -7,7 +7,7 @@ function Payment(props) {
     const [password, setPassword] = useState()
     const [state, setState] = useState('initial')
     function userLogin(login, password){
-        axios.get('http://127.0.0.1:8000/2', {params: {login:login, password:password, request_type:"payment"}}).then((data)=>{
+        axios.get('http://127.0.0.1:8000/2', {params: {login:login, id:props.id, password:password, request_type:"payment"}}).then((data)=>{
             console.log(data)
             if (data.data.success){
                 console.log(1111)
@@ -32,7 +32,7 @@ function Payment(props) {
         (
             
             <div className='user-form'>
-                {/* {axios.get('http://127.0.0.1:8000/2', {params: {id: props.id, request_type:"paymentx"}})} */}
+                {console.log('ax')}
                 <div className='title'>Оплата прошла успешно!</div>
                 <button className='bbutton' onClick={props.toMain}> На главную</button>
             </div>

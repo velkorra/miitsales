@@ -31,6 +31,7 @@ body{
 .user-form .title{
     position: relative;
     top: 5%;
+    text-wrap: wrap;
     text-align: center;
     font-size: 2rem;
     font-family: 'Exo 2', Helvetica, Arial, sans-serif;

@@ -10,12 +10,14 @@ import Payment from "./components/Payment";
 const App = () => {
     const [pageState, setPageState] = useState('main')
     const [price, setPrice] = useState()
+    const [id, setId] = useState()
     const [logged, setLogged] = useState(localStorage.getItem('token')===null?false:true)
     const setToken = (token) => localStorage.setItem('token',token)
     const setStatus = (status) => localStorage.setItem('status',status)
     const setUser = (status) => localStorage.setItem('username',status)
     const toLoginPage = () => setPageState('login')
-    const toPaymentPage = (price) => {setPageState('payment'); setPrice(price)}
+    const toPaymentPage = (price, id) => {setPageState('payment'); setPrice(price); setId(id)}
+    const toUserPage = () => setPageState('userpage')
     const toMainPage = () => setPageState('main')
     const toRegistrationPage = () => setPageState('registration')
     if (pageState === 'login' || pageState==='registration') {
@@ -24,13 +26,13 @@ const App = () => {
         )
     }
     else if (pageState==='payment'){
-        return(<Payment price={price} toMain={toMainPage}></Payment>)
+        return(<Payment price={price} id={id} toMain={toMainPage}></Payment>)
     }
-    else if (pageState === 'main') {
+    else if (pageState === 'main' || pageState==='userpage') {
         return (
             <div>
-                <Header toLogin={toLoginPage} toReg={toRegistrationPage} logged={logged} setToken={setToken} setLogged={(value)=>setLogged(value)} setStatus={setStatus} setUser={setUser}></Header>
-                <MainPage toPayment={toPaymentPage} toLogin={toLoginPage}></MainPage>
+                <Header pageState={pageState} toUserPage={toUserPage} toLogin={toLoginPage} toReg={toRegistrationPage} logged={logged} setToken={setToken} setLogged={(value)=>setLogged(value)} setStatus={setStatus} setUser={setUser} toMain={toMainPage}></Header>
+                <MainPage toPayment={toPaymentPage} username={localStorage.getItem('username')} toLogin={toLoginPage}></MainPage>
             </div>
         )
     }

@@ -52,10 +52,18 @@ class SessionView(APIView):
     def get(self, request):
         from random import randint
         request_type = request.GET.get('request_type')
+        if request_type == 'userflights':
+            login = (request.GET.get('login'))
+            password = (request.GET.get('password'))
+            userbuy = Ticket.objects.filter(username=login)
+            print()
         if request_type=='payment':
             login = (request.GET.get('login'))
             password = (request.GET.get('password'))
             if login=='456987123' and password=='key118':
+                ticket = Flight.objects.get(id=request.GET.get('id'))
+                ticket.spare_economy-=1
+                ticket.save()
                 return Response({'success': True})
             else:
                 return Response({'success': False})
