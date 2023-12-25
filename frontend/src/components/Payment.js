@@ -12,6 +12,7 @@ function Payment(props) {
             if (data.data.success){
                 console.log(1111)
                 setState('payment')
+                
             }
         else{
             alert('Неверный номер или код карты')
