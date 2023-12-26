@@ -37,6 +37,29 @@ body {
     }
     
 }
+@media (max-width:1200px){
+    .ticket{
+        flex-direction: column;
+        height: 5vh;
+        border-right: none;
+    }
+    .ticket-info{
+        border-right: none;
+        border-bottom: solid;
+        border-bottom-width: 0.1px;
+        border-bottom-color: rgba(0, 0, 0, 0.15);
+    }
+    .ticket .ticket-info button{
+        /* height: ; */
+        background-color: black;
+    }
+    .ticket-buy{
+        flex: 2;
+    }
+    .ticket-info .price{
+        display: none;
+    }
+}
 .header-content .money{
     position: absolute;
     height: 20%;
@@ -277,9 +300,4 @@ body {
 
     top: 50%;
     width: 50%;
-}
-@media (max-width:1100px) {
-    *{
-        font-size: 0.85em;
-    }    
 }
