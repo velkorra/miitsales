@@ -32,3 +32,5 @@ class Session(models.Model):
     status = models.CharField(max_length=10)
     userID = models.CharField(max_length=60)
     time = models.DateTimeField(auto_now=False, auto_now_add=True)
+    def __str__(self) -> str:
+        return self.userID

@@ -15,6 +15,7 @@ function LoginForm(props) {
                 props.controllers.setStatus(data.data.status)
                 props.controllers.toMain()
                 props.controllers.setUser(data.data.username)
+                localStorage.setItem('money', '0')
             }
         else{
             alert('Неверный логин или пароль')

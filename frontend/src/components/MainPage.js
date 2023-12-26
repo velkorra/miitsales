@@ -11,6 +11,15 @@ function MainPage(props) {
     function fetchTickets() {
         console.log(props.pageState)
         props.pageState==='userpage'?
+        localStorage.getItem('status')==='cashier'?
+        axios
+        .get('http://127.0.0.1:8000/2', {params: {request_type:"alluser"}})
+        .then(data => {
+                console.log(data)
+                setTickets(data.data)
+                setIsReady(true)
+        })
+        :
         axios
         .get('http://127.0.0.1:8000/2', {params: {username:props.username, request_type:"userflights"}})
         .then(data => { 

@@ -15,17 +15,19 @@ function Ticket(props) {
                 <div className='date-to'>{day_to}, {ticket.arrival_time}</div>
                 <div className='airport-from'>{ticket.departure_airport}</div>
                 <div className='airport-to'>{ticket.arrival_airport}</div>
+                {localStorage.getItem('status')==='cashier' && props.pageState==="userpage"?
+                <div className='user'>Билет оформлен на {ticket.user}</div>:''}
             </div>
             {props.pageState==="userpage"?
             <div className='ticket-buy'>
-                <button onClick={()=>props.toRefundPage(ticket.id)}>Оформить возврат</button>
+                <button onClick={()=>{props.toRefundPage(ticket.id);localStorage.setItem('refunduser', ticket.user)}}>Оформить возврат</button>
                 <div className='price'>Эконом</div>
             </div>
             :
             <div className='ticket-buy'>
-                {localStorage.getItem('status')==='admin'?<button><a href={`http://127.0.0.1:8000/admin/app/flight/${ticket.id}/change/`}>Изменить</a></button>:localStorage.getItem('status')==='client'?<button onClick={()=>props.toPayment(ticket.price_economy, ticket.id)}>Купить</button>:<button onClick={props.toLogin}>Необходим вход</button>}
+                {localStorage.getItem('status')==='admin'?<button><a href={`http://127.0.0.1:8000/admin/app/flight/${ticket.id}/change/`}>Изменить</a></button>:localStorage.getItem('status')==='client'?<button onClick={()=>props.toPayment(ticket.price_economy, ticket.id)}>Купить</button>:localStorage.getItem('status')==='cashier'?<button onClick={()=>props.toPayment(ticket.price_economy, ticket.id)}>Оформить покупку</button>:<button onClick={props.toLogin}>Необходим вход</button>}
                 <div className='left'>Осталось {ticket.spare_economy+ticket.spare_business} мест</div>
-                <div className='price'>от {ticket.price_economy} ₽</div>
+                <div className='price'>{ticket.price_economy} ₽</div>
             </div>
             }
         </div>
