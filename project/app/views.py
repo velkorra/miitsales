@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from . models import *
 from . serializer import *
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 
 class FlightView(APIView):
@@ -37,8 +38,7 @@ class TicketView(APIView):
     def get(self, request):
         output = [{
             'flightID': output.flightID,
-            'price': output.price,
-            'ticket_class': output.ticket_class
+            'username': output.username
             } for output in Ticket.objects.all()]
         return Response(output)
     
@@ -53,16 +53,36 @@ class SessionView(APIView):
         from random import randint
         request_type = request.GET.get('request_type')
         if request_type == 'userflights':
-            login = (request.GET.get('login'))
-            password = (request.GET.get('password'))
-            userbuy = Ticket.objects.filter(username=login)
-            print()
+            login = (request.GET.get('username'))
+            tickets = Ticket.objects.filter(username=login)
+            output = [{
+                'id':output.id,
+                'departure_city': output.departure_city,
+                'departure_airport': output.departure_airport,
+                'arrival_city': output.arrival_city,
+                'arrival_airport': output.arrival_airport,
+                'departure_day': output.departure_day,
+                'departure_time': output.departure_time,
+                'arrival_day': output.arrival_day,
+                'arrival_time': output.arrival_time,
+                'aviation_company': output.aviation_company,
+                'spare_economy': output.spare_economy,
+                'spare_business': output.spare_business,
+                'price_economy': output.price_economy,
+                'price_business': output.price_business,
+                'plane': output.plane
+            } for output in Flight.objects.filter(id__in=tickets)]
+            return Response(output)
         if request_type=='payment':
             login = (request.GET.get('login'))
             password = (request.GET.get('password'))
-            if login=='456987123' and password=='key118':
-                ticket = Flight.objects.get(id=request.GET.get('id'))
-                ticket.spare_economy-=1
+            card= (request.GET.get('card'))
+            if card=='456987123' and password=='key118':
+                flightID=request.GET.get('id')
+                flight = Flight.objects.get(id=flightID)
+                flight.spare_economy-=1
+                flight.save()
+                ticket = Ticket(username=login, flightID=flightID)
                 ticket.save()
                 return Response({'success': True})
             else:
@@ -70,11 +90,19 @@ class SessionView(APIView):
         if request_type=='create_user':
             login = (request.GET.get('login'))
             password = (request.GET.get('password'))
-            user = User.objects.create_user(username=login, email=login, password=password)
-            session = Session(userID=user.get_username(), status='client', token=str(randint(10**20, 10**50)))
-            session.save()
-            print(session)
-            return Response({'babba': 'bobba'})
+            try:
+                user = User.objects.create_user(username=login, email=login, password=password)
+                session = Session(userID=user.get_username(), status='client', token=str(randint(10**20, 10**50)))
+                session.save()
+                output = {
+                    'success': True,
+                    'status': session.status,
+                    'token': session.token,
+                    'username':login
+                    }
+                return Response(output)
+            except:
+                return Response({'success': False})
         if request_type=='login':
             login = (request.GET.get('login'))
             password = (request.GET.get('password'))

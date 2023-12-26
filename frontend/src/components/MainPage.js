@@ -7,14 +7,15 @@ function MainPage(props) {
     const [tickets, setTickets] = useState([])
     const [isReady, setIsReady] = useState(false)
     const filter = (ticket=>ticket.departure_city==='Москва')
-    useEffect(fetchTickets, [])
+    useEffect(fetchTickets, [props.pageState])
     function fetchTickets() {
+        console.log(props.pageState)
         props.pageState==='userpage'?
         axios
-        .get('http://127.0.0.1:8000/2', {params: {login:props.login, request_type:"userflights"}})
+        .get('http://127.0.0.1:8000/2', {params: {username:props.username, request_type:"userflights"}})
         .then(data => { 
-            console.log(2344);
-
+                setTickets(data.data)
+                setIsReady(true)
         }):
         axios
             .get('http://127.0.0.1:8000/1')

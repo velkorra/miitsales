@@ -11,7 +11,7 @@ function LoginPage(props) {
     <div className='logo' onClick={props.toMain} >MiitSales</div>
         {props.pageState==="login"?
         <LoginForm controllers={props}></LoginForm>:
-        <RegistrationForm></RegistrationForm>}
+        <RegistrationForm controllers={props}></RegistrationForm>}
     </div>
   )
 }

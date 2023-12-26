@@ -7,8 +7,9 @@ function LoginForm(props) {
     const [password, setPassword] = useState()
     function userLogin(login, password){
         axios.get('http://127.0.0.1:8000/2', {params: {login:login, password:password, request_type:"login"}}).then((data)=>{
-            console.log(data)
             if (data.data.success){
+                console.log('login');
+                console.log(data.data)
                 props.controllers.setLogged(true)
                 props.controllers.setToken(data.data.token)
                 props.controllers.setStatus(data.data.status)

@@ -5,7 +5,6 @@ function Ticket(props) {
     const months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Отктября", "Ноября", "Декабря"]
     const day_from = ticket.departure_day.slice(0,2) + " "+ months[parseInt(ticket.departure_day.slice(3, 5))-1].toLowerCase()
     const day_to = ticket.arrival_day.slice(0,2) + " "+ months[parseInt(ticket.departure_day.slice(3, 5))-1].toLowerCase()
-    console.log(ticket)
     return (
         <div className='ticket'>
             <div className='ticket-info'>
