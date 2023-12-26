@@ -52,9 +52,24 @@ class SessionView(APIView):
     def get(self, request):
         from random import randint
         request_type = request.GET.get('request_type')
+        if request_type=='refund':
+            login = (request.GET.get('login'))
+            password = (request.GET.get('password'))
+            card= (request.GET.get('card'))
+            if card=='456987123' and password=='key118':
+                flightID=request.GET.get('id')
+                flight = Flight.objects.get(id=flightID)
+                print(flight)
+                flight.spare_economy+=1
+                flight.save()
+                ticket = Ticket.objects.get(flightID=flightID, username=login)
+                ticket.delete()
+                return Response({'success': True})        
         if request_type == 'userflights':
             login = (request.GET.get('username'))
-            tickets = Ticket.objects.filter(username=login)
+            tickets = [ticket.flightID for ticket in Ticket.objects.filter(username=login)]
+            print(tickets)
+            print(Flight.objects.filter(id__in=tickets))
             output = [{
                 'id':output.id,
                 'departure_city': output.departure_city,
@@ -72,6 +87,7 @@ class SessionView(APIView):
                 'price_business': output.price_business,
                 'plane': output.plane
             } for output in Flight.objects.filter(id__in=tickets)]
+            print(output)
             return Response(output)
         if request_type=='payment':
             login = (request.GET.get('login'))

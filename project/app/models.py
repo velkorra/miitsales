@@ -23,6 +23,9 @@ class Flight(models.Model):
 class Ticket(models.Model):
     flightID = models.IntegerField()
     username=models.CharField(max_length=50)
+    def __str__(self):
+        return self.username + ' ' + 'flight ' + str(self.flightID)
+    
     
 class Session(models.Model):
     token = models.CharField(max_length=60)
